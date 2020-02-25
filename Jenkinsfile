@@ -27,7 +27,7 @@ stages {
        // Run the maven build
 
       //if (isUnix()) {
-         sh label: '', script: 'mvn clean packages'
+         sh label: '', script: 'mvn clean package'
       //} 
       //else {
       //   bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
@@ -54,23 +54,23 @@ stages {
         }
     }
 }
-     stage('Artifact upload') {
-      steps {
-       nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]
-      }
-     }
+    // stage('Artifact upload') {
+      //steps {
+       //nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]
+     // }
+     //}
     //stage('Deploy War') {
       //steps {
         //sh label: '', script: 'ansible-playbook deploy.yml'
       //}
  //}
-}
-post {
-       success {
-            archiveArtifacts 'gameoflife-web/target/*.war'
-        }
-       failure {
-           mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
-        }
+//}
+//post {
+  //     success {
+    //        archiveArtifacts 'gameoflife-web/target/*.war'
+      //  }
+      // failure {
+        //   mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+       // }
     }       
 }
