@@ -38,7 +38,7 @@ sh label: '', script: 'mvn clean package'
 	stage ('Nexus storage')
 	{
 		steps {
-nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'var/lib/jenkins/geme-of-life.war']], mavenCoordinate: [artifactId: 'ravi', groupId: '1234', packaging: 'war', version: '$BUILD_ID']]]
+nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'var/lib/jenkins/gemeoflife.war']], mavenCoordinate: [artifactId: 'ravi', groupId: '1234', packaging: 'war', version: '$BUILD_ID']]]
 }
 }
 stage ('Deploy war')
