@@ -10,7 +10,7 @@ stages {
 stage('Gitcheckout')
 {
 steps{
-git credentialsId: 'github', url: 'https://github.com/ravigithud/game-of-life.git'
+git 'https://github.com/samratyada/game-of-life.git'
 }
 }
 stage('Maven conf')
