@@ -16,7 +16,7 @@ git 'https://github.com/samratyada/game-of-life.git'
 stage('Maven conf')
 {
 steps {
-sh label: '', script: 'mvn install'
+sh label: '', script: 'mvn clean package'
 }
 }
       
