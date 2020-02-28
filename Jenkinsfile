@@ -37,8 +37,9 @@ sh label: '', script: 'mvn clean package'
 	
 	stage ('Nexus storage')
 	{
-		steps {
-nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'var/lib/jenkins/gemeoflife.war']], mavenCoordinate: [artifactId: 'ravi', groupId: '1234', packaging: 'war', version: '$BUILD_ID']]]
+
+	steps {
+		nexusArtifactUploader artifacts: [[artifactId: 'gameoflife', classifier: '', file: 'gameoflife-web/target/gameoflife.war', type: 'war']], credentialsId: '95333090-9821-42c8-ae21-8899ee100b04', groupId: 'new', nexusUrl: '3.85.167.144:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'sam123', version: '$BUILD_NUMBER'
 }
 }
 stage ('Deploy war')
